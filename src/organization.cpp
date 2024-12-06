@@ -50,6 +50,7 @@ void Organization::searchProduct(int *productID, string *productName) {
             cout << "Stock Level: " << (*searchedProduct)->stockLevel << endl;
             cout << "Threshold: " << (*searchedProduct)->reorderThreshold << endl;
             found = true;
+
         } else {
             cout << "Product with ID " << *productID << " doesn't exist." << endl;
         }

@@ -14,8 +14,8 @@ int main() {
         o1.addProduct(&p2);
         o1.addProduct(&p3);
 
-        o1.searchProduct(nullptr,&p1.productName);
-        o1.displayInventory();
+        o1.searchProduct(&p3.productID,nullptr);
+        // o1.displayInventory();
 
     } catch (const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl;
