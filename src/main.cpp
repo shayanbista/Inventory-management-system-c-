@@ -12,6 +12,8 @@ int main() {
         o1.addProduct(&p1);
         o1.addProduct(&p1);
 
+        o1.removeProduct(&p1.productID);
+
 
 
 
