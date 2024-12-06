@@ -6,7 +6,7 @@ set<int> Product::existingIds;
 
 
 Product::Product(int productID, string productName, string category, double price, int stockLevel, int reorderThreshold)
-    : productID(productID), productName(productName), category(category), price(price), stocklevel(stockLevel), reorderThreshold(reorderThreshold) {
+    : productID(productID), productName(productName), category(category), price(price), stockLevel(stockLevel), reorderThreshold(reorderThreshold) {
         checkExistingId(productID);
         existingIds.insert(productID);
 }
@@ -19,9 +19,9 @@ void Product::checkExistingId(int productID) {
 }
 
 void Product::updateStockLevel(int purchasedLevel) {
-   stocklevel -= purchasedLevel;  
+   stockLevel -= purchasedLevel;  
 }
 
 bool Product::checkReorderThreshold() {
-    return stocklevel < reorderThreshold;
+    return stockLevel < reorderThreshold;
 }
