@@ -82,3 +82,17 @@ void Organization::searchProduct(int *productID, string *productName) {
         cout << "No product found with the given ID or Name." << endl;
     }
 }
+
+
+void Organization::displayInventory() {
+
+    for(auto &product:products){
+        cout << "Product ID: " << product->productID << endl;
+        cout << "Product Name: " << product->productName << endl;
+        cout << "Category: " << product->category << endl;
+        cout << "Price: " << product->price << endl;
+        cout << "Stock Level: " << product->stockLevel << endl;
+        cout << "Reorder Threshold: " << product->reorderThreshold << endl;
+        cout << "---------------------------" << endl;  
+    }
+}

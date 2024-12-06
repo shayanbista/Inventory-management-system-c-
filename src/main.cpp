@@ -7,13 +7,15 @@ int main() {
 
         Product p1(101, "Product1", "Category1", 29.99, 50, 10);  
         Product p2(104, "Product1", "Category1", 29.99, 50, 10); 
-        Product p3W(105, "Product2", "Category1", 29.99, 50, 10); 
+        Product p3(105, "Product2", "Category1", 29.99, 50, 10); 
 
         Organization o1;
         o1.addProduct(&p1);
         o1.addProduct(&p2);
+        o1.addProduct(&p3);
 
         o1.searchProduct(nullptr,&p1.productName);
+        o1.displayInventory();
 
     } catch (const std::invalid_argument& e) {
         std::cerr << e.what() << std::endl;
