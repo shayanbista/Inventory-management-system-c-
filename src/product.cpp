@@ -37,6 +37,10 @@ void Product::setStockLevel(int newStockLevel) {
     }
 
 
+
+
+
+
 void Product::updateStockLevel(int purchasedLevel) {
     if (purchasedLevel <= 0) {
         throw invalid_argument("Purchased level must be positive.");
@@ -60,7 +64,6 @@ void Product::updateStockLevel(int purchasedLevel) {
     }
 
 }
-
 
 bool Product::checkReorderThreshold() {
     return stockLevel < reorderThreshold;
