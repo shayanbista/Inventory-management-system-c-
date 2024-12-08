@@ -1,0 +1,30 @@
+{
+    "name": "inventory-management-system",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "g++ src/main.cpp src/organization.cpp src/product.cpp src/supplier.cpp -o build/inventory_system -I include",
+        "run": "./build/inventory_system",
+        "build:run": "g++ src/main.cpp src/organization.cpp src/product.cpp src/supplier.cpp -o build/inventory_system -I include && ./build/inventory_system",
+        "clean": "rm -rf build/*",
+        "debug": "g++ -g src/main.cpp src/organization.cpp src/product.cpp src/supplier.cpp -o build/inventory_system_debug -I include",
+        "lint": "g++ -fsyntax-only src/*.cpp -I include"
+    },
+    "compiler": {
+        "cpp_standard": "c++17",
+        "flags": [
+            "-Wall",
+            "-Wextra",
+            "-O2",
+            "-fdiagnostics-color=always"
+        ],
+        "include_dirs": [
+            "include"
+        ],
+        "source_files": [
+            "src/main.cpp",
+            "src/organization.cpp", 
+            "src/product.cpp",
+            "src/supplier.cpp"
+        ]
+    }
+}

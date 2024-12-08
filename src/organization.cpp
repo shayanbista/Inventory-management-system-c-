@@ -1,7 +1,12 @@
 #include <iostream>
+#include <algorithm>
+#include <cmath> 
+
 #include "Organization.h"
 #include "Product.h"
-#include <algorithm>
+#include "Supplier.h"  
+
+
 
 
 void Organization::addProduct(Product* product) {
@@ -14,6 +19,8 @@ void Organization::addProduct(Product* product) {
 
     if (!productExists) {
         products.push_back(product);
+        product->organization = shared_from_this();
+
         cout << "Product added successfully: ID " << product->productID << endl;      
     }
 
@@ -85,7 +92,7 @@ void Organization::searchProduct(int *productID, string *productName) {
 }
 
 
-void Organization::addSubscriber(std::shared_ptr<Supplier> supplier) {
+void Organization::addSubscriber(shared_ptr<Supplier> supplier) {
     if (!supplier) {
         throw invalid_argument("Cannot add null supplier");
     }
@@ -105,6 +112,13 @@ void Organization::addSubscriber(std::shared_ptr<Supplier> supplier) {
 }
 
 
+void Organization::notifySuppliers(Product* product) {
+    for (auto it = subscribers.begin(); it != subscribers.end(); ++it) {
+        (*it)->notifyRestock(product->productID, abs(product->stockLevel - product->reorderThreshold));
+    }
+}
+
+
 void Organization::displayInventory() {
 
     for(auto &product:products){
@@ -116,4 +130,20 @@ void Organization::displayInventory() {
         cout << "Reorder Threshold: " << product->reorderThreshold << endl;
         cout << "---------------------------" << endl;  
     }
+}
+
+void Organization::generateReport() {
+
+  for (auto &product:products){
+
+                cout<<"----------------------------------------------------------"<<endl;
+                cout << "Product ID: " << product->productID << endl;
+                cout << "Product Name: " << product->productName << endl;
+                cout << "Category: " << product->category << endl;
+                cout << "Stock Level: " << product->stockLevel << endl;
+                cout << "Threshold: " << product->reorderThreshold << endl;
+                cout<<"----------------------------------------------------------"<<endl;
+  }
+
+
 }

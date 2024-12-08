@@ -3,27 +3,33 @@
 
 #include <string>
 #include <set>
+#include <memory>
+
+class Organization;
 
 using namespace std;
 
-class Product{
+class Product {
 
-    public:
-        Product(int productID, string productName, string category, double price, int stockLevel, int reorderThreshold);
-       
-        void updateStockLevel(int purchasedLevel);
-        bool checkReorderThreshold();
+public:
+    static set<int> existingIds;  
+    int productID;
+    string productName;
+    string category;
+    double price;
+    int stockLevel;
+    int reorderThreshold;
 
-    private:
-        static set<int> existingIds;
-        int productID;
-        string productName;
-        string category;
-        double price;
-        int stocklevel;
-        int reorderThreshold;
 
-        static void checkExistingId(int productID);
+    shared_ptr<Organization> organization;
+
+    Product(int productID, string productName, string category, double price, int stockLevel, int reorderThreshold);
+    static void checkExistingId(int productID);  
+    void updateStockLevel(int purchasedLevel);
+    bool checkReorderThreshold();
+    void setStockLevel(int newStockLevel);
 };
 
-#endif  
+
+
+#endif
