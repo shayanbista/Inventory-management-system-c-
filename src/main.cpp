@@ -1,6 +1,9 @@
 #include <iostream>
 #include "Product.h"  
 #include "Organization.h"
+#include "Supplier.h"
+
+using namespace std;
 
 int main() {
     try {
@@ -17,8 +20,16 @@ int main() {
         o1.searchProduct(&p3.productID,nullptr);
         o1.displayInventory();
 
+        LocalSupplier  localSupplier("Local Supplier");
+        GlobalSupplier globalSupplier("Global Supplier");
+
+
+
+
+        
+
     } catch (const std::invalid_argument& e) {
-        cerr << e.what() << std::endl;
+        cerr << e.what() << endl;
     }
 
     return 0;
