@@ -85,6 +85,26 @@ void Organization::searchProduct(int *productID, string *productName) {
 }
 
 
+void Organization::addSubscriber(std::shared_ptr<Supplier> supplier) {
+    if (!supplier) {
+        throw invalid_argument("Cannot add null supplier");
+    }
+
+    // Check if supplier already exists
+    auto it = find_if(subscribers.begin(), subscribers.end(),
+        [&supplier](const shared_ptr<Supplier>& existing) {
+            return existing == supplier;
+        });
+
+    if (it == subscribers.end()) {
+        subscribers.push_back(supplier);
+        cout << "Supplier added successfully" << endl;
+    } else {
+        cout << "This supplier is already subscribed to the organization" << endl;
+    }
+}
+
+
 void Organization::displayInventory() {
 
     for(auto &product:products){
